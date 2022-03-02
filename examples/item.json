@@ -41,14 +41,14 @@
   "properties": {
     "datetime": "2020-12-11T22:38:32Z",
     "accuracy:northern_geometric": {
-      "bias": 0.0,
-      "stddev": 1.0
+      "bias": 0,
+      "stddev": 1
     },
     "accuracy:eastern_geometric": {
-      "bias": 0.0,
-      "stddev": 1.0
+      "bias": 0,
+      "stddev": 1
     },
-    "accuracy:geometric_radial_rmse": 1.0
+    "accuracy:geometric_radial_rmse": 1
   },
   "links": [
     {

@@ -38,7 +38,8 @@
     "data": {
       "roles": [
         "data"
-      ]
+      ],
+      "title": "Data"
     }
   },
   "summaries": {
@@ -47,14 +48,20 @@
       "maximum": "2019-07-10T13:44:56Z"
     },
     "accuracy:northern_geometric": [
-      {"bias": 0.0, "stddev": 1.0}
+      {
+        "bias": 0,
+        "stddev": 1
+      }
     ],
     "accuracy:eastern_geometric": [
-      {"bias": 0.0, "stddev": 1.0}
+      {
+        "bias": 0,
+        "stddev": 1
+      }
     ],
     "accuracy:geometric_radial_rmse": {
-      "minimum": 1.0,
-      "maximum": 1.0
+      "minimum": 1,
+      "maximum": 1
     }
   },
   "links": [
