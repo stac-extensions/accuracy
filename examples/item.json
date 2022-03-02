@@ -1,7 +1,7 @@
 {
   "stac_version": "1.0.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/accuracy/v1.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "item",
@@ -40,17 +40,15 @@
   },
   "properties": {
     "datetime": "2020-12-11T22:38:32Z",
-    "template:new_field": "test",
-    "template:xyz": {
-      "x": 1,
-      "y": 2,
-      "z": 3
+    "accuracy:northern_geometric": {
+      "bias": 0.0,
+      "stddev": 1.0
     },
-    "template:another_one": [
-      1,
-      2,
-      3
-    ]
+    "accuracy:eastern_geometric": {
+      "bias": 0.0,
+      "stddev": 1.0
+    },
+    "accuracy:geometric_radial_rmse": 1.0
   },
   "links": [
     {
@@ -60,8 +58,7 @@
   ],
   "assets": {
     "data": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
+      "href": "https://example.com/examples/file.xyz"
     }
   }
 }

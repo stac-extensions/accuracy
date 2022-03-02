@@ -2,7 +2,7 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/accuracy/v1.0.0/schema.json"
   ],
   "type": "Collection",
   "id": "collection",
@@ -29,21 +29,9 @@
       ]
     }
   },
-  "template:new_field": "test",
-  "template:xyz": {
-    "x": 1,
-    "y": 2,
-    "z": 3
-  },
-  "template:another_one": [
-    1,
-    2,
-    3
-  ],
   "assets": {
     "example": {
       "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
     }
   },
   "item_assets": {
@@ -51,13 +39,22 @@
       "roles": [
         "data"
       ],
-      "template:new_field": "test"
     }
   },
   "summaries": {
     "datetime": {
       "minimum": "2015-06-23T00:00:00Z",
       "maximum": "2019-07-10T13:44:56Z"
+    },
+    "accuracy:northern_geometric": [
+      {"bias": 0.0, "stddev": 1.0}
+    ],
+    "accuracy:eastern_geometric": [
+      {"bias": 0.0, "stddev": 1.0}
+    ],
+    "accuracy:geometric_radial_rmse": {
+      "minimum": 1.0,
+      "maximum": 1.0
     }
   },
   "links": [

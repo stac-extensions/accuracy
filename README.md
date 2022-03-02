@@ -1,14 +1,13 @@
-# Template Extension Specification
+# Accuracy Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** Accuracy
+- **Identifier:** <https://stac-extensions.github.io/accuracy/v1.0.0/schema.json>
+- **Field Name Prefix:** accuracy
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @matthewhanson
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the Accuracy Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification. Included are fields to provide estimates of accuracy, both geometric and measurement (e.g., radiometric) accuracy.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
@@ -20,34 +19,16 @@ This is the place to add a short introduction.
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field... |
-| template:another_one | \[number]                 | Describe the field... |
+| accuracy:northern_geometric    | [Geometric Accuracy Object](#geometric-accuracy-object) | An estimate of the northern geometric accuracy. |
+| accuracy:eastern_geometric     | [Geometric Accuracy Object](#geometric-accuracy-object) | An estimate of the eastern geometric accuracy. |
+| accuracy:geometric_radial_rmse | number    | Radial root mean square error (rRMSE) for sub-sample accuracy, in meters. |
 
-### Additional Field Information
+### Geometric Accuracy Object
 
-#### template:new_field
-
-This is a much more detailed description of the field `template:new_field`...
-
-### XYZ Object
-
-This is the introduction for the purpose and the content of the XYZ Object...
-
-| Field Name  | Type   | Description |
-| ----------- | ------ | ----------- |
-| x           | number | **REQUIRED**. Describe the required field... |
-| y           | number | **REQUIRED**. Describe the required field... |
-| z           | number | **REQUIRED**. Describe the required field... |
-
-## Relation types
-
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
-
-| Type                | Description |
-| ------------------- | ----------- |
-| fancy-rel-type      | This link points to a fancy resource. |
+| Field Name | Data Type | Description              |
+| ---------- | --------- | ------------------------ |
+| bias       | number    | **REQUIRED.** Bias, in meters. |
+| stddev     | number    | **REQUIRED.** Standard deviation, in meters. |
 
 ## Contributing
 
