@@ -28,7 +28,6 @@ and measurement (e.g., radiometric) accuracy.
 | accuracy:geometric_y_stddev | Number | An estimate of the geometric standard deviation in the y direction. |
 | accuracy:geometric_rmse | Number    | Radial root mean square error (rRMSE), in meters. |
 
-
 ## Contributing
 
 All contributions are subject to the

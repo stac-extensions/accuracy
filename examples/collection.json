@@ -47,22 +47,21 @@
       "minimum": "2015-06-23T00:00:00Z",
       "maximum": "2019-07-10T13:44:56Z"
     },
-    "accuracy:northern_geometric": [
-      {
-        "bias": 0,
-        "stddev": 1
-      }
+    "accuracy:geometric_x_bias": [
+      0
     ],
-    "accuracy:eastern_geometric": [
-      {
-        "bias": 0,
-        "stddev": 1
-      }
+    "accuracy:geometric_y_bias": [
+      0
     ],
-    "accuracy:geometric_radial_rmse": {
-      "minimum": 1,
-      "maximum": 1
-    }
+    "accuracy:geometric_x_stddev": [
+      0.5
+    ],
+    "accuracy:geometric_y_stddev": [
+      0.5
+    ],
+    "accuracy:geometric_rmse": [
+      1
+    ]
   },
   "links": [
     {

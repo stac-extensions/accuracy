@@ -40,15 +40,11 @@
   },
   "properties": {
     "datetime": "2020-12-11T22:38:32Z",
-    "accuracy:northern_geometric": {
-      "bias": 0,
-      "stddev": 1
-    },
-    "accuracy:eastern_geometric": {
-      "bias": 0,
-      "stddev": 1
-    },
-    "accuracy:geometric_radial_rmse": 1
+    "accuracy:geometric_x_bias": 0,
+    "accuracy:geometric_y_bias": 0,
+    "accuracy:geometric_x_stddev": 0.5,
+    "accuracy:geometric_y_stddev": 0.5,
+    "accuracy:geometric_rmse": 1
   },
   "links": [
     {
