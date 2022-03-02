@@ -25,9 +25,7 @@
               "allOf": [
                 {
                   "$comment": "Require fields here for Item Properties.",
-                  "required": [
-                    "accuracy:northern_geometric"
-                  ]
+                  "required": []
                 },
                 {
                   "$ref": "#/definitions/fields"
@@ -174,22 +172,30 @@
     "require_any_field": {
       "$comment": "Please list all fields here so that we can force the existance of one of them in other parts of the schemas.",
       "anyOf": [
-        {"required": ["accuracy:northern_geometric"]},
-        {"required": ["accuracy:eastern_geometric"]},
-        {"required": ["accuracy:geometric_radial_rmse"]}
+        {"required": ["accuracy:geometric_x_bias"]},
+        {"required": ["accuracy:geometric_y_bias"]},
+        {"required": ["accuracy:geometric_x_stddev"]},
+        {"required": ["accuracy:geometric_y_stddev"]},
+        {"required": ["accuracy:geometric_rmse"]}
       ]
     },
     "fields": {
       "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
       "type": "object",
       "properties": {
-        "accuracy:northern_geometric": {
-          "$ref": "#/definitions/geometric_accuracy"
+        "accuracy:geometric_x_bias": {
+          "type": "number"
         },
-        "accuracy:eastern_geometric": {
-          "$ref": "#/definitions/geometric_accuracy"
+        "accuracy:geometric_y_bias": {
+          "type": "number"
         },
-        "accuracy:geometric_radial_rmse": {
+        "accuracy:geometric_x_stddev": {
+          "type": "number"
+        },
+        "accuracy:geometric_y_stddev": {
+          "type": "number"
+        },
+        "accuracy:geometric_rmse": {
           "type": "number"
         }
       },

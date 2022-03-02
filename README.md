@@ -22,16 +22,12 @@ and measurement (e.g., radiometric) accuracy.
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| accuracy:northern_geometric    | [Geometric Accuracy Object](#geometric-accuracy-object) | An estimate of the northern geometric accuracy. |
-| accuracy:eastern_geometric     | [Geometric Accuracy Object](#geometric-accuracy-object) | An estimate of the eastern geometric accuracy. |
-| accuracy:geometric_radial_rmse | number    | Radial root mean square error (rRMSE) for sub-sample accuracy, in meters. |
+| accuracy:geometric_x_bias | Number | An estimate of the geometric bias in the x direction. |
+| accuracy:geometric_y_bias | Number | An estimate of the geometric bias in the y direction. |
+| accuracy:geometric_x_stddev | Number | An estimate of the geometric standard deviation in the x direction. |
+| accuracy:geometric_y_stddev | Number | An estimate of the geometric standard deviation in the y direction. |
+| accuracy:geometric_rmse | Number    | Radial root mean square error (rRMSE), in meters. |
 
-### Geometric Accuracy Object
-
-| Field Name | Data Type | Description              |
-| ---------- | --------- | ------------------------ |
-| bias       | number    | **REQUIRED.** Bias, in meters. |
-| stddev     | number    | **REQUIRED.** Standard deviation, in meters. |
 
 ## Contributing
 
