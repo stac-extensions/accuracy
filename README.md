@@ -7,7 +7,10 @@
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner**: @matthewhanson
 
-This document explains the Accuracy Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification. Included are fields to provide estimates of accuracy, both geometric and measurement (e.g., radiometric) accuracy.
+This document explains the Accuracy Extension to the
+[SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) 
+specification. Included are fields to provide estimates of accuracy, both geometric
+and measurement (e.g., radiometric) accuracy.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
