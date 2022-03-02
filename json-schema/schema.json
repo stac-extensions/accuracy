@@ -154,20 +154,20 @@
             "const": "https://stac-extensions.github.io/accuracy/v1.0.0/schema.json"
           }
         }
-      },
-      "geometric_accuracy": {
-        "type": "object",
-        "required": [
-          "bias",
-          "stddev"
-        ],
-        "properties": {
-          "bias": {
-            "type": "number"
-          },
-          "stddev": {
-            "type": "number"
-          }
+      }
+    },
+    "geometric_accuracy": {
+      "type": "object",
+      "required": [
+        "bias",
+        "stddev"
+      ],
+      "properties": {
+        "bias": {
+          "type": "number"
+        },
+        "stddev": {
+          "type": "number"
         }
       }
     },
