@@ -20,15 +20,15 @@ and measurement (e.g., radiometric) accuracy.
 
 ## Item Properties and Collection Fields
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| accuracy:geometric_x_bias | Number | An estimate of the geometric bias in the x direction. |
-| accuracy:geometric_y_bias | Number | An estimate of the geometric bias in the y direction. |
-| accuracy:geometric_x_stddev | Number | An estimate of the geometric standard deviation in the x direction. |
-| accuracy:geometric_y_stddev | Number | An estimate of the geometric standard deviation in the y direction. |
-| accuracy:geometric_rmse | Number    | Radial root mean square error (rRMSE), in meters. |
-| accuracy:measurement_relative | Number    | The measurement relative uncertainty, in the measured units. |
-| accuracy:measurement_absolute | Number    | The measurement absolite uncertainty, in the measured units. |
+| Field Name                    | Type   | Description |
+| ----------------------------- | ------ | ----------- |
+| accuracy:geometric_x_bias     | number | An estimate of the geometric bias in the x direction. |
+| accuracy:geometric_y_bias     | number | An estimate of the geometric bias in the y direction. |
+| accuracy:geometric_x_stddev   | number | An estimate of the geometric standard deviation in the x direction. |
+| accuracy:geometric_y_stddev   | number | An estimate of the geometric standard deviation in the y direction. |
+| accuracy:geometric_rmse       | number | Radial root mean square error (rRMSE), in meters. |
+| accuracy:measurement_relative | number | The measurement relative uncertainty, in the measured units. |
+| accuracy:measurement_absolute | number | The measurement absolute uncertainty, in the measured units. |
 
 ## Contributing
 
