@@ -44,7 +44,9 @@
     "accuracy:geometric_y_bias": 0,
     "accuracy:geometric_x_stddev": 0.5,
     "accuracy:geometric_y_stddev": 0.5,
-    "accuracy:geometric_rmse": 1
+    "accuracy:geometric_rmse": 1,
+    "accuracy:measurement_relative": 0.01,
+    "accuracy:measurement_absolute": 0.02
   },
   "links": [
     {

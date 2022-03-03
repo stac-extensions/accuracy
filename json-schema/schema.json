@@ -154,21 +154,6 @@
         }
       }
     },
-    "geometric_accuracy": {
-      "type": "object",
-      "required": [
-        "bias",
-        "stddev"
-      ],
-      "properties": {
-        "bias": {
-          "type": "number"
-        },
-        "stddev": {
-          "type": "number"
-        }
-      }
-    },
     "require_any_field": {
       "$comment": "Please list all fields here so that we can force the existance of one of them in other parts of the schemas.",
       "anyOf": [
@@ -176,7 +161,9 @@
         {"required": ["accuracy:geometric_y_bias"]},
         {"required": ["accuracy:geometric_x_stddev"]},
         {"required": ["accuracy:geometric_y_stddev"]},
-        {"required": ["accuracy:geometric_rmse"]}
+        {"required": ["accuracy:geometric_rmse"]},
+        {"required": ["accuracy:measurement_relative"]},
+        {"required": ["accuracy:measurement_absolute"]}
       ]
     },
     "fields": {
@@ -196,6 +183,12 @@
           "type": "number"
         },
         "accuracy:geometric_rmse": {
+          "type": "number"
+        },
+        "accuracy:measurement_relative": {
+          "type": "number"
+        },
+        "accuracy:measurement_absolute": {
           "type": "number"
         }
       },

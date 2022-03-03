@@ -61,7 +61,15 @@
     ],
     "accuracy:geometric_rmse": [
       1
-    ]
+    ],
+    "accuracy:measurement_relative": {
+      "minimum": 0.01,
+      "maximum": 0.02
+    },
+    "accuracy:measurement_absolute": {
+      "minimum": 0.01,
+      "maximum": 0.02
+    }
   },
   "links": [
     {
