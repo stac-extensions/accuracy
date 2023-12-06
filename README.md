@@ -1,7 +1,7 @@
 # Accuracy Extension Specification
 
 - **Title:** Accuracy
-- **Identifier:** <https://stac-extensions.github.io/accuracy/v1.0.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/accuracy/v1.0.0-beta.1/schema.json>
 - **Field Name Prefix:** accuracy
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
