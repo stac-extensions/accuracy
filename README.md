@@ -28,17 +28,44 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name                    | Type   | Description |
-| ----------------------------- | ------ | ----------- |
-| accuracy:geometric_x_bias     | number | An estimate of the geometric bias in the x direction. |
-| accuracy:geometric_y_bias     | number | An estimate of the geometric bias in the y direction. |
+| Field Name                    | Type   | Description                                                         |
+| ----------------------------- | ------ | ------------------------------------------------------------------- |
+| accuracy:geometric_x_bias     | number | An estimate of the geometric bias in the x direction.               |
+| accuracy:geometric_y_bias     | number | An estimate of the geometric bias in the y direction.               |
 | accuracy:geometric_x_stddev   | number | An estimate of the geometric standard deviation in the x direction. |
 | accuracy:geometric_y_stddev   | number | An estimate of the geometric standard deviation in the y direction. |
-| accuracy:geometric_rmse       | number | Radial root mean square error (rRMSE), in meters. |
-| accuracy:measurement_relative | number | The measurement relative uncertainty, in the measured units. |
-| accuracy:measurement_absolute | number | The measurement absolute uncertainty, in the measured units. |
+| accuracy:geometric_rmse       | number | Radial root mean square error (rRMSE), in meters.                   |
+| accuracy:measurement_relative | number | The measurement relative uncertainty, in the measured units.        |
+| accuracy:measurement_absolute | number | The measurement absolute uncertainty, in the measured units.        |
 
 *At least one of the fields must be specified.*
+
+## Relation types
+
+The following types should be used as applicable `rel` types in the
+[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
+
+| Type                 | Description                                                               |
+| -------------------- | ------------------------------------------------------------------------- |
+| radiometric-accuracy | URL describing the assessed absolute radiometric uncertainty of the data. |
+| geometric-accuracy   | URL describing the assessed geometric accuracy of the data.               |
+
+### Geometric Correction
+
+Geometric corrections are steps that are taken to place the measurement accurately on the surface of the Earth
+(that is, to geolocate the measurement) allowing measurements taken through time to be compared.
+
+The focus of this extension is are the accuracy values, but the geometric correction directly influences the accuracy and as such
+a number of additional relation types are provided here to guide users to information about the geometric correction.
+
+| Type                 | Description                                        |
+| -------------------- | -------------------------------------------------- |
+| geometric-correction | URL to the Geometric Correction algorithm details. |
+| elevation-model      | URL to the Digital Elevation Model (DEM).          |
+| surface-model        | URL to the Digital Surface Model (DSM).            |
+
+The relation types `elevation-model` and `surface-model` can be provided in any kind of file format (e.g., HTML or PDF),
+but preferrably point to a STAC Collection or Item with additional metadata for the DEM/DSM.
 
 ## Contributing
 
