@@ -1,138 +1,85 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://stac-extensions.github.io/accuracy/v1.0.0/schema.json#",
-  "title": "Template Extension",
-  "description": "STAC Template Extension for STAC Items and STAC Collections.",
+  "title": "Accuracy Extension",
+  "description": "STAC Accuracy Extension for STAC Items and STAC Collections.",
+  "type": "object",
+  "required": [
+    "stac_extensions"
+  ],
+  "properties": {
+    "stac_extensions": {
+      "type": "array",
+      "contains": {
+        "const": "https://stac-extensions.github.io/accuracy/v1.0.0/schema.json"
+      }
+    }
+  },
   "oneOf": [
     {
-      "$comment": "This is the schema for STAC Items. Remove this object if this extension only applies to Collections.",
-      "allOf": [
-        {
-          "$ref": "#/definitions/stac_extensions"
+      "$comment": "This is the schema for STAC Items.",
+      "type": "object",
+      "required": [
+        "type",
+        "properties",
+        "assets"
+      ],
+      "properties": {
+        "type": {
+          "const": "Feature"
         },
-        {
+        "properties": {
+          "$ref": "#/definitions/fields"
+        },
+        "assets": {
+          "$comment": "This validates the fields in Item Assets, but does not require them.",
           "type": "object",
-          "required": [
-            "type",
-            "properties",
-            "assets"
-          ],
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      },
+      "anyOf": [
+        {
           "properties": {
-            "type": {
-              "const": "Feature"
-            },
             "properties": {
-              "allOf": [
-                {
-                  "$comment": "Require fields here for Item Properties.",
-                  "required": []
-                },
-                {
-                  "$ref": "#/definitions/fields"
-                }
-              ]
-            },
-            "assets": {
-              "$comment": "This validates the fields in Item Assets, but does not require them.",
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
+              "$ref": "#/definitions/require_any"
             }
           }
+        },
+        {
+          "$ref": "#/definitions/require_in_assets"
         }
       ]
     },
     {
       "$comment": "This is the schema for STAC Collections.",
       "type": "object",
-      "allOf": [
-        {
-          "required": [
-            "type"
-          ],
-          "properties": {
-            "type": {
-              "const": "Collection"
-            }
-          }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
+      "required": [
+        "type"
       ],
+      "properties": {
+        "type": {
+          "const": "Collection"
+        },
+        "assets": {
+          "$ref": "#/definitions/fields"
+        },
+        "item_assets": {
+          "$ref": "#/definitions/fields"
+        }
+      },
       "anyOf": [
         {
-          "$comment": "This is the schema for the top-level fields in a Collection. Remove this if this extension does not define top-level fields for Collections.",
-          "allOf": [
-            {
-              "$comment": "Require fields here for Collections (top-level).",
-              "required": [
-              ]
-            },
-            {
-              "$ref": "#/definitions/fields"
-            }
-          ]
+          "$ref": "#/definitions/require_in_item_assets"
         },
         {
-          "$comment": "This validates the fields in Collection Assets, but does not require them.",
-          "required": [
-            "assets"
-          ],
-          "properties": {
-            "assets": {
-              "type": "object",
-              "not": {
-                "additionalProperties": {
-                  "not": {
-                    "allOf": [
-                      {
-                        "$ref": "#/definitions/require_any_field"
-                      },
-                      {
-                        "$ref": "#/definitions/fields"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          }
+          "$ref": "#/definitions/require_in_assets"
         },
         {
-          "$comment": "This is the schema for the fields in Item Asset Definitions. It doesn't require any fields.",
-          "required": [
-            "item_assets"
-          ],
-          "properties": {
-            "item_assets": {
-              "type": "object",
-              "not": {
-                "additionalProperties": {
-                  "not": {
-                    "allOf": [
-                      {
-                        "$ref": "#/definitions/require_any_field"
-                      },
-                      {
-                        "$ref": "#/definitions/fields"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        {
-          "$comment": "This is the schema for the fields in Summaries. By default, only checks the existance of the properties, but not the schema of the summaries.",
-          "required": [
-            "summaries"
-          ],
           "properties": {
             "summaries": {
-              "$ref": "#/definitions/require_any_field"
+              "$ref": "#/definitions/require_any"
             }
           }
         }
@@ -140,21 +87,7 @@
     }
   ],
   "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": [
-        "stac_extensions"
-      ],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://stac-extensions.github.io/accuracy/v1.0.0/schema.json"
-          }
-        }
-      }
-    },
-    "require_any_field": {
+    "require_any": {
       "$comment": "Please list all fields here so that we can force the existance of one of them in other parts of the schemas.",
       "anyOf": [
         {"required": ["accuracy:geometric_x_bias"]},
@@ -166,8 +99,40 @@
         {"required": ["accuracy:measurement_absolute"]}
       ]
     },
+    "require_in_assets": {
+      "required": [
+        "assets"
+      ],
+      "properties": {
+        "assets": {
+          "not": {
+            "additionalProperties": {
+              "not": {
+                "$ref": "#/definitions/require_any"
+              }
+            }
+          }
+        }
+      }
+    },
+    "require_in_item_assets": {
+      "required": [
+        "item_assets"
+      ],
+      "properties": {
+        "item_assets": {
+          "not": {
+            "additionalProperties": {
+              "not": {
+                "$ref": "#/definitions/require_any"
+              }
+            }
+          }
+        }
+      }
+    },
     "fields": {
-      "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
+      "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding sub-schemas.",
       "type": "object",
       "properties": {
         "accuracy:geometric_x_bias": {
@@ -183,7 +148,8 @@
           "type": "number"
         },
         "accuracy:geometric_rmse": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0
         },
         "accuracy:measurement_relative": {
           "type": "number"
@@ -193,9 +159,7 @@
         }
       },
       "patternProperties": {
-        "^(?!accuracy:)": {
-          "$comment": "Prefix"
-        }
+        "^(?!accuracy:)": {}
       },
       "additionalProperties": false
     }

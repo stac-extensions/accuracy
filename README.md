@@ -18,7 +18,15 @@ and measurement (e.g., radiometric) accuracy.
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Fields
+
+The fields in the table below can be used in these parts of STAC documents:
+
+- [ ] Catalogs
+- [ ] Collections
+- [x] Item Properties (incl. Summaries in Collections)
+- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
+- [ ] Links
 
 | Field Name                    | Type   | Description |
 | ----------------------------- | ------ | ----------- |
@@ -29,6 +37,8 @@ and measurement (e.g., radiometric) accuracy.
 | accuracy:geometric_rmse       | number | Radial root mean square error (rRMSE), in meters. |
 | accuracy:measurement_relative | number | The measurement relative uncertainty, in the measured units. |
 | accuracy:measurement_absolute | number | The measurement absolute uncertainty, in the measured units. |
+
+*At least one of the fields must be specified.*
 
 ## Contributing
 
