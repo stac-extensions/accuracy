@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stac-extensions.github.io/accuracy/v1.0.0-beta.1/schema.json#",
+  "title": "Accuracy Extension",
+  "description": "STAC Accuracy Extension for STAC Items and STAC Collections.",
+  "type": "object",
+  "required": [
+    "stac_extensions"
+  ],
+  "properties": {
+    "stac_extensions": {
+      "type": "array",
+      "contains": {
+        "const": "https://stac-extensions.github.io/accuracy/v1.0.0-beta.1/schema.json"
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items.",
+      "type": "object",
+      "required": [
+        "type",
+        "properties",
+        "assets"
+      ],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "$ref": "#/definitions/fields"
+        },
+        "assets": {
+          "$comment": "This validates the fields in Item Assets, but does not require them.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      },
+      "anyOf": [
+        {
+          "properties": {
+            "properties": {
+              "$ref": "#/definitions/require_any"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/require_in_assets"
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for STAC Collections.",
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "const": "Collection"
+        },
+        "assets": {
+          "$ref": "#/definitions/fields"
+        },
+        "item_assets": {
+          "$ref": "#/definitions/fields"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/definitions/require_in_item_assets"
+        },
+        {
+          "$ref": "#/definitions/require_in_assets"
+        },
+        {
+          "properties": {
+            "summaries": {
+              "$ref": "#/definitions/require_any"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "require_any": {
+      "$comment": "Please list all fields here so that we can force the existance of one of them in other parts of the schemas.",
+      "anyOf": [
+        {"required": ["accuracy:geometric_x_bias"]},
+        {"required": ["accuracy:geometric_y_bias"]},
+        {"required": ["accuracy:geometric_x_stddev"]},
+        {"required": ["accuracy:geometric_y_stddev"]},
+        {"required": ["accuracy:geometric_rmse"]},
+        {"required": ["accuracy:measurement_relative"]},
+        {"required": ["accuracy:measurement_absolute"]}
+      ]
+    },
+    "require_in_assets": {
+      "required": [
+        "assets"
+      ],
+      "properties": {
+        "assets": {
+          "not": {
+            "additionalProperties": {
+              "not": {
+                "$ref": "#/definitions/require_any"
+              }
+            }
+          }
+        }
+      }
+    },
+    "require_in_item_assets": {
+      "required": [
+        "item_assets"
+      ],
+      "properties": {
+        "item_assets": {
+          "not": {
+            "additionalProperties": {
+              "not": {
+                "$ref": "#/definitions/require_any"
+              }
+            }
+          }
+        }
+      }
+    },
+    "fields": {
+      "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding sub-schemas.",
+      "type": "object",
+      "properties": {
+        "accuracy:geometric_x_bias": {
+          "type": "number"
+        },
+        "accuracy:geometric_y_bias": {
+          "type": "number"
+        },
+        "accuracy:geometric_x_stddev": {
+          "type": "number"
+        },
+        "accuracy:geometric_y_stddev": {
+          "type": "number"
+        },
+        "accuracy:geometric_rmse": {
+          "type": "number",
+          "minimum": 0
+        },
+        "accuracy:measurement_relative": {
+          "type": "number"
+        },
+        "accuracy:measurement_absolute": {
+          "type": "number"
+        }
+      },
+      "patternProperties": {
+        "^(?!accuracy:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}
