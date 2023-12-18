@@ -32,7 +32,6 @@
           "$ref": "#/definitions/fields"
         },
         "assets": {
-          "$comment": "This validates the fields in Item Assets, but does not require them.",
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/fields"
@@ -79,7 +78,14 @@
         {
           "properties": {
             "summaries": {
-              "$ref": "#/definitions/require_any"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/require_any"
+                },
+                {
+                  "$ref": "#/definitions/require_in_bands"
+                }
+              ]
             }
           }
         }
@@ -99,19 +105,26 @@
         {"required": ["accuracy:measurement_absolute"]}
       ]
     },
+    "require_in_bands": {
+      "required": [
+        "bands"
+      ],
+      "properties": {
+        "bands": {
+          "type": "array",
+          "contains": {
+            "$ref": "#/definitions/require_any"
+          }
+        }
+      }
+    },
     "require_in_assets": {
       "required": [
         "assets"
       ],
       "properties": {
         "assets": {
-          "not": {
-            "additionalProperties": {
-              "not": {
-                "$ref": "#/definitions/require_any"
-              }
-            }
-          }
+          "$ref": "#/definitions/require_in_assetlike"
         }
       }
     },
@@ -121,12 +134,23 @@
       ],
       "properties": {
         "item_assets": {
+          "$ref": "#/definitions/require_in_assetlike"
+        }
+      }
+    },
+    "require_in_assetlike": {
+      "$comment": "The not/additionalProperties/not combination is essentially the 'contains' keyword.",
+      "not": {
+        "additionalProperties": {
           "not": {
-            "additionalProperties": {
-              "not": {
+            "anyOf": [
+              {
                 "$ref": "#/definitions/require_any"
+              },
+              {
+                "$ref": "#/definitions/require_in_bands"
               }
-            }
+            ]
           }
         }
       }
@@ -161,7 +185,24 @@
       "patternProperties": {
         "^(?!accuracy:)": {}
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/fields_in_bands"
+        }
+      ]
+    },
+    "fields_in_bands": {
+      "bands": {
+        "type": "array",
+        "contains": {
+          "properties": {
+            "bands": {
+              "$ref": "#/definitions/fields"
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -13,8 +13,9 @@ specification. Included are fields to provide estimates of accuracy, both geomet
 and measurement (e.g., radiometric) accuracy.
 
 - Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
+  - [Item example](examples/item.json): Example in Item Properties
+  - [Bands in Item Assets example](examples/item-bands.json): Example in Bands in Item Assets (since STAC v1.1)
+  - [Collection example](examples/collection.json): Example in a STAC Collection
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
@@ -27,6 +28,7 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Item Properties (incl. Summaries in Collections)
 - [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
+- [x] Bands
 
 | Field Name                    | Type   | Description                                                         |
 | ----------------------------- | ------ | ------------------------------------------------------------------- |
